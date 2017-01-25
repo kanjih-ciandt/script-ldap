@@ -1,0 +1,80 @@
+# Basic LDAP structure form CodeLab 
+# command => ldapadd -x -D "cn=admin,dc=google,dc=cit,dc=com,dc=br" -w Senha@123 -H ldap:// -f codelabLdapConfiguration.ldif
+
+dn: ou=Groups,dc=google,dc=cit,dc=com,dc=br
+objectClass: organizationalunit
+objectClass: top
+ou: Groups
+
+dn: ou=People,dc=google,dc=cit,dc=com,dc=br
+objectClass: organizationalunit
+objectClass: top
+ou: People
+
+
+dn: cn=AppAdmin,ou=Groups,dc=google,dc=cit,dc=com,dc=br
+objectClass: groupOfUniqueNames
+objectClass: top
+ou: groups
+description: People who can adminstrate the application
+uniquemember: uid=dlucas,ou=People,dc=google,dc=cit,dc=com,dc=br
+cn: AppAdmin
+
+dn: cn=AppUser,ou=Groups,dc=google,dc=cit,dc=com,dc=br
+objectClass: groupOfUniqueNames
+objectClass: top
+ou: groups
+description: People who can use the application
+uniquemember: uid=dlucas,ou=People,dc=google,dc=cit,dc=com,dc=br
+uniquemember: uid=dramon,ou=People,dc=google,dc=cit,dc=com,dc=br
+uniquemember: uid=tdrake,ou=People,dc=google,dc=cit,dc=com,dc=br
+cn: AppUser
+
+
+# Sample user #1
+dn: uid=dlucas,ou=People,dc=google,dc=cit,dc=com,dc=br
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: dlucas
+userpassword: test@123
+givenname: Douglas
+cn: Douglas Lucas
+sn: Lucas
+mail: dlucas@google.cit.com.br
+l: Santa Clara
+ou: People
+
+
+# Sample user #2
+dn: uid=dramon,ou=People,dc=google,dc=cit,dc=com,dc=br
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: dramon
+userpassword: test@123
+givenname: Draco
+cn: Draco Ramon
+sn: Ramon
+mail: dramon@google.cit.com.br
+l: Santa Clara
+ou: People
+
+# Sample user #3
+dn: uid=tdrake,ou=People,dc=google,dc=cit,dc=com,dc=br
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: tdrake
+userpassword: test@123
+givenname: Timur
+cn: Timur Drake
+sn: Drake
+mail: tdrake@google.cit.com.br
+l: Santa Clara
+ou: People
+
+

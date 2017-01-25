@@ -1,0 +1,83 @@
+# Basic LDAP structure form CodeLab 
+# Parameters to replace:
+# {0} -> Base DC
+# {1} -> Domain
+# {2} -> Initial user password
+
+dn: ou=Groups{0}
+objectClass: organizationalunit
+objectClass: top
+ou: Groups
+
+dn: ou=People{0}
+objectClass: organizationalunit
+objectClass: top
+ou: People
+
+
+dn: cn=AppAdmin,ou=Groups{0}
+objectClass: groupOfUniqueNames
+objectClass: top
+ou: groups
+description: People who can adminstrate the application
+uniquemember: uid=dlucas,ou=People{0}
+cn: AppAdmin
+
+dn: cn=AppUser,ou=Groups{0}
+objectClass: groupOfUniqueNames
+objectClass: top
+ou: groups
+description: People who can use the application
+uniquemember: uid=dlucas,ou=People{0}
+uniquemember: uid=dramon,ou=People{0}
+uniquemember: uid=tdrake,ou=People{0}
+cn: AppUser
+
+
+# Sample user #1
+dn: uid=dlucas,ou=People{0}
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: dlucas
+userpassword: {2}
+givenname: Douglas
+cn: Douglas Lucas
+sn: Lucas
+mail: dlucas@{1}
+l: Santa Clara
+ou: People
+
+
+# Sample user #2
+dn: uid=dramon,ou=People{0}
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: dramon
+userpassword: {2}
+givenname: Draco
+cn: Draco Ramon
+sn: Ramon
+mail: dramon@{1}
+l: Santa Clara
+ou: People
+
+# Sample user #3
+dn: uid=tdrake,ou=People{0}
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: top
+uid: tdrake
+userpassword: {2}
+givenname: Timur
+cn: Timur Drake
+sn: Drake
+mail: tdrake@{1}
+l: Santa Clara
+ou: People
+
+
